@@ -41,7 +41,7 @@ for bot_id, persona_text in BOT_PERSONAS.items():
 print("All personas stored.\n")
 
 
-def route_post_to_bots(post_content: str, threshold: float = 0.35) -> list:
+def route_post_to_bots(post_content: str, threshold: float = 0.10) -> list:
     """
     Embeds the incoming post and queries ChromaDB for persona matches.
     Returns a list of bots whose similarity score exceeds the threshold.
