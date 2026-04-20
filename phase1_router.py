@@ -65,6 +65,7 @@ def route_post_to_bots(post_content: str, threshold: float = 0.10) -> list:
     matched_bots = []
     print(f'Post: "{post_content}"')
     print("-" * 55)
+    
 
     for meta, distance in zip(
         results["metadatas"][0], results["distances"][0]
@@ -73,10 +74,11 @@ def route_post_to_bots(post_content: str, threshold: float = 0.10) -> list:
         bot_id = meta["bot_id"]
         status = "MATCHED" if similarity >= threshold else "skipped"
         print(f"  {bot_id}: similarity = {similarity:.4f}  ->  {status}")
+    
 
         if similarity >= threshold:
             matched_bots.append({"bot_id": bot_id, "similarity": round(similarity, 4)})
-
+    
     print(f"\nMatched bots: {[b['bot_id'] for b in matched_bots]}\n")
     return matched_bots
 
